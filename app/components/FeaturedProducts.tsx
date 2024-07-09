@@ -1,3 +1,4 @@
+"use client";
 import React from 'react';
 
 interface Product {
@@ -19,7 +20,7 @@ const products: Product[] = [
     status: undefined,
   },
   {
-    id: 3,
+    id: 2,
     imageUrl: 'drink4.webp',
     altText: 'Cocktail',
     label: 'Handcrafted Cocktail',
@@ -27,8 +28,16 @@ const products: Product[] = [
     status: 'New',
   },
   {
-    id: 4,
+    id: 3,
     imageUrl: 'drink8.jpg',
+    altText: 'White Wine',
+    label: 'Fine White Wine',
+    price: 35,
+    status: 'Selling Fast',
+  },
+  {
+    id: 4,
+    imageUrl: 'herodrink6.jpg',
     altText: 'White Wine',
     label: 'Fine White Wine',
     price: 35,
@@ -42,11 +51,35 @@ const products: Product[] = [
     price: 35,
     status: 'Organic',
   },
+  {
+    id: 6,
+    imageUrl: 'drink6.png',
+    altText: 'White Wine',
+    label: 'Fine White Wine',
+    price: 35,
+    status: 'Selling Fast',
+  },
+  {
+    id: 7,
+    imageUrl: 'herodrink4.png',
+    altText: 'White Wine',
+    label: 'Fine White Wine',
+    price: 35,
+    status: 'Selling Fast',
+  },
+  {
+    id: 8,
+    imageUrl: 'herodrink5.webp',
+    altText: 'White Wine',
+    label: 'Fine White Wine',
+    price: 35,
+    status: 'Selling Fast',
+  },
 ];
 
 const ProductCard: React.FC<Product> = ({ imageUrl, altText, label, price, status }) => {
   return (
-    <div className=" relative max-h-screen flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-72 mb-8">
+    <div className="relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-full m-4">
       <div className="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white bg-clip-border rounded-xl h-64">
         <img src={imageUrl} alt={altText} className="object-contain w-full h-full" />
       </div>
@@ -76,11 +109,11 @@ const ProductCard: React.FC<Product> = ({ imageUrl, altText, label, price, statu
 
 const Products: React.FC = () => {
   return (
-    <div className="container mx-auto max-w-screen-xl mt-20 mb-20">
-      <h2 className="text-2xl font-bold  text-gray-700 mb-8">Our Products</h2>
-      <div className="p-1 flex flex-wrap items-center justify-center">
+    <div className="container mx-auto max-w-screen-xl mt-20 mb-20 px-4">
+      <h2 className="text-2xl font-bold text-gray-700 mb-8 text-center sm:text-left">Featured Products</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {products.map((product) => (
-          <ProductCard 
+          <ProductCard
             key={product.id}
             imageUrl={product.imageUrl}
             altText={product.altText}
