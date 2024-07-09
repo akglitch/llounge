@@ -99,7 +99,7 @@ const ProductCard: React.FC<Product> = ({ imageUrl, altText, label, price, statu
       </div>
       <div className="p-4 pt-0">
         <button
-          className="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-2 px-4 rounded-lg shadow-gray-900/10 hover:shadow-gray-900/20 focus:opacity-85 active:opacity-85 active:shadow-none block w-full bg-blue-gray-900/10 text-blue-gray-900 shadow-none hover:scale-105 focus:scale-105 active:scale-100"
+          className="align-middle select-none  font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-2 px-4 rounded-lg shadow-gray-900/10 hover:shadow-gray-900/20 focus:opacity-85 active:opacity-85 active:shadow-none block w-full bg-blue-gray-900/10 text-blue-gray-900 shadow-none hover:scale-105 focus:scale-105 active:scale-100"
           type="button">
           Buy Now
         </button>
