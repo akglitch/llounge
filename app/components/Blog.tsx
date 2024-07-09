@@ -35,7 +35,7 @@ const blogPosts: BlogPost[] = [
 const Blog: React.FC = () => {
   return (
     <div className="container mx-auto max-w-screen-xl py-12 px-4">
-      <h2 className="text-3xl text-gray-600 font-bold mb-8">Latest Journals</h2>
+      <h2 className="text-2xl text-gray-600 font-bold mb-8">Latest Journals</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {blogPosts.map(post => (
           <div key={post.id} className="bg-white rounded-lg shadow-sm">
