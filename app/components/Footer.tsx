@@ -54,7 +54,7 @@ const Footer: React.FC = () => {
             <a className="flex items-center justify-center font-medium text-gray-900 title-font md:justify-start">
             <h1>Llounge</h1>
             </a>
-            <p className="mt-2 text-sm text-gray-500">Design, Code and Ship!</p>
+            <p className="mt-2 text-sm text-gray-500">Drink, Wine and Dine!</p>
             <div className="mt-4">
               <span className="inline-flex justify-center mt-2 sm:ml-auto sm:mt-0 sm:justify-start">
                 {['facebook', 'twitter', 'instagram', 'linkedin'].map((social, index) => (
@@ -100,7 +100,7 @@ const Footer: React.FC = () => {
         </div>
         <div className="bg-gray-300">
           <div className="container px-5 py-4 mx-auto">
-            <p className="text-sm text-gray-700 capitalize xl:text-center">© 2020 All rights reserved </p>
+            <p className="text-sm text-gray-700 text-center capitalize xl:text-center">© 2024 All rights reserved </p>
           </div>
         </div>
       </footer>
