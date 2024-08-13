@@ -111,7 +111,7 @@ const ProductCard: React.FC<Product> = ({ imageUrl, altText, label, price, statu
 const Products: React.FC = () => {
   return (
     <div className=" mx-auto max-w-screen-xl mt-20 mb-20 px-4">
-      <h2 className="text-2xl font-bold text-gray-700 mb-8 text-center sm:text-left">Featured Products</h2>
+      <h2 className="text-2xl font-bold text-gray-700 mb-8 text-left sm:text-left">Featured Products</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {products.map((product) => (
           <ProductCard
