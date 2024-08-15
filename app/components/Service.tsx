@@ -3,7 +3,7 @@ import React from 'react';
 const Services = () => {
   return (
     <div className="container mx-auto max-w-screen-xl bg-white py-56 px-4">
-      <h2 className="text-center text-2xl md:text-3xl lg:text-2xl italic mb-36 text-black font-semibold ">Experience the luxury</h2>
+      <h2 className="text-left text-2xl md:text-3xl lg:text-2xl italic mb-36 text-black font-semibold ">Experience the luxury</h2>
       <div className="flex flex-col md:flex-row md:justify-start space-y-4 md:space-y-0 md:space-x-4">
         <div className="flex flex-col items-start p-6 shadow-lg">
           <div className="h-12 w-12 bg-gray-200 flex items-center justify-center rounded-full mb-4">
