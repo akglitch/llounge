@@ -13,11 +13,6 @@ const slides = [
     description: 'Discover the world\'s finest wines from the best vineyards.',
   },
   {
-    image: '/drink6.png',
-    title: 'Exquisite Cocktails',
-    description: 'Savor the taste of expertly crafted cocktails.',
-  },
-  {
     image: '/drink3.webp',
     title: 'Luxury Spirits',
     description: 'Indulge in premium spirits for special moments.',
