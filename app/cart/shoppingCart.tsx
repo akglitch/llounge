@@ -1,139 +1,110 @@
-"use client";
-import React, { useState } from 'react';
-
-type Product = {
-  id: number;
-  name: string;
-  color: string;
-  size: string;
-  price: number;
-  quantity: number;
-  inStock: boolean;
-  image: string;
-};
-
-const dummyProducts: Product[] = [
-  {
-    id: 1,
-    name: "Chateau Margaux",
-    color: "Red Wine",
-    size: "750ml",
-    price: 399.99,
-    quantity: 1,
-    inStock: true,
-    image: "https://via.placeholder.com/150/8B0000/FFFFFF?text=Red+Wine",
-  },
-  {
-    id: 2,
-    name: "Moet & Chandon",
-    color: "Champagne",
-    size: "750ml",
-    price: 89.99,
-    quantity: 2,
-    inStock: true,
-    image: "https://via.placeholder.com/150/F5F5DC/000000?text=Champagne",
-  },
-  {
-    id: 3,
-    name: "Perrier",
-    color: "Sparkling Water",
-    size: "500ml",
-    price: 2.99,
-    quantity: 6,
-    inStock: true,
-    image: "https://via.placeholder.com/150/87CEEB/000000?text=Sparkling+Water",
-  },
-];
+import React from 'react';
 
 const ShoppingCart: React.FC = () => {
-  const [cart, setCart] = useState(dummyProducts);
-
-  const handleQuantityChange = (productId: number, quantity: number) => {
-    setCart(cart.map(product =>
-      product.id === productId ? { ...product, quantity } : product
-    ));
-  };
-
-  const handleRemoveItem = (productId: number) => {
-    setCart(cart.filter(product => product.id !== productId));
-  };
-
-  const shippingEstimate = 5.99;
-  const taxEstimate = 3.45;
-  const subtotal = cart.reduce((sum, product) => sum + product.price * product.quantity, 0);
-  const total = subtotal + shippingEstimate + taxEstimate;
-
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen">
-      <h1 className="text-3xl font-bold text-gray-900 mb-8">Shopping Cart</h1>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2">
-          {cart.map(product => (
-            <div
-              key={product.id}
-              className="flex items-center space-x-6 py-6 border-b border-gray-200"
-            >
-              <img
-                src={product.image}
-                alt={product.name}
-                className="w-28 h-28 object-cover rounded-md shadow-sm"
-              />
-              <div className="flex-1">
-                <h2 className="text-xl font-semibold text-gray-900">{product.name}</h2>
-                <p className="text-gray-500">{product.color} - {product.size}</p>
-                <p className="text-gray-900">${product.price.toFixed(2)}</p>
-                <p className={`text-sm ${product.inStock ? "text-green-600" : "text-gray-500"}`}>
-                  {product.inStock ? "In stock" : "Ships in 3-4 weeks"}
-                </p>
+    <div className="relative z-10" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
+      {/* Background backdrop, show/hide based on slide-over state */}
+      <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+
+      <div className="fixed inset-0 overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
+            {/* Slide-over panel, show/hide based on slide-over state */}
+            <div className="pointer-events-auto w-screen max-w-md">
+              <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
+                <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
+                  <div className="flex items-start justify-between">
+                    <h2 className="text-lg font-medium text-gray-900" id="slide-over-title">Shopping cart</h2>
+                    <div className="ml-3 flex h-7 items-center">
+                      <button type="button" className="relative -m-2 p-2 text-gray-400 hover:text-gray-500">
+                        <span className="absolute -inset-0.5"></span>
+                        <span className="sr-only">Close panel</span>
+                        <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="mt-8">
+                    <div className="flow-root">
+                      <ul role="list" className="-my-6 divide-y divide-gray-200">
+                        <li className="flex py-6">
+                          <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                            <img src="https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg" alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt." className="h-full w-full object-cover object-center" />
+                          </div>
+
+                          <div className="ml-4 flex flex-1 flex-col">
+                            <div>
+                              <div className="flex justify-between text-base font-medium text-gray-900">
+                                <h3>
+                                  <a href="#">Throwback Hip Bag</a>
+                                </h3>
+                                <p className="ml-4">$90.00</p>
+                              </div>
+                              <p className="mt-1 text-sm text-gray-500">Salmon</p>
+                            </div>
+                            <div className="flex flex-1 items-end justify-between text-sm">
+                              <p className="text-gray-500">Qty 1</p>
+
+                              <div className="flex">
+                                <button type="button" className="font-medium text-indigo-600 hover:text-indigo-500">Remove</button>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+
+                        <li className="flex py-6">
+                          <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                            <img src="https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg" alt="Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch." className="h-full w-full object-cover object-center" />
+                          </div>
+
+                          <div className="ml-4 flex flex-1 flex-col">
+                            <div>
+                              <div className="flex justify-between text-base font-medium text-gray-900">
+                                <h3>
+                                  <a href="#">Medium Stuff Satchel</a>
+                                </h3>
+                                <p className="ml-4">$32.00</p>
+                              </div>
+                              <p className="mt-1 text-sm text-gray-500">Blue</p>
+                            </div>
+                            <div className="flex flex-1 items-end justify-between text-sm">
+                              <p className="text-gray-500">Qty 1</p>
+
+                              <div className="flex">
+                                <button type="button" className="font-medium text-indigo-600 hover:text-indigo-500">Remove</button>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+
+                        {/* More products... */}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
+                  <div className="flex justify-between text-base font-medium text-gray-900">
+                    <p>Subtotal</p>
+                    <p>$262.00</p>
+                  </div>
+                  <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
+                  <div className="mt-6">
+                    <a href="#" className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700">Checkout</a>
+                  </div>
+                  <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
+                    <p>
+                      or
+                      <button type="button" className="font-medium text-indigo-600 hover:text-indigo-500">
+                        Continue Shopping
+                        <span aria-hidden="true"> &rarr;</span>
+                      </button>
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div className="flex items-center space-x-3">
-                <select
-                  className="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  value={product.quantity}
-                  onChange={(e) => handleQuantityChange(product.id, parseInt(e.target.value))}
-                >
-                  <option value="" disabled>Quantity</option>
-                  {[...Array(10).keys()].map(n => (
-                    <option key={n + 1} value={n + 1}>
-                      {n + 1}
-                    </option>
-                  ))}
-                </select>
-                <button
-                  className="text-red-600 hover:text-red-900"
-                  onClick={() => handleRemoveItem(product.id)}
-                >
-                  &times;
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="lg:col-span-1">
-          <div className="bg-white shadow sm:rounded-lg p-8">
-            <h2 className="text-lg font-medium text-gray-900">Order summary</h2>
-            <dl className="mt-6 space-y-4">
-              <div className="flex items-center justify-between">
-                <dt className="text-sm text-gray-600">Subtotal</dt>
-                <dd className="text-sm font-medium text-gray-900">${subtotal.toFixed(2)}</dd>
-              </div>
-              <div className="flex items-center justify-between">
-                <dt className="text-sm text-gray-600">Shipping estimate</dt>
-                <dd className="text-sm font-medium text-gray-900">${shippingEstimate.toFixed(2)}</dd>
-              </div>
-              <div className="flex items-center justify-between">
-                <dt className="text-sm text-gray-600">Tax estimate</dt>
-                <dd className="text-sm font-medium text-gray-900">${taxEstimate.toFixed(2)}</dd>
-              </div>
-              <div className="flex items-center justify-between border-t border-gray-200 pt-4">
-                <dt className="text-base font-medium text-gray-900">Order total</dt>
-                <dd className="text-base font-medium text-gray-900">${total.toFixed(2)}</dd>
-              </div>
-            </dl>
-            <div className="mt-6">
-              <button className="w-full bg-indigo-600 border border-transparent rounded-md shadow-sm py-3 px-4 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                Checkout
-              </button>
             </div>
           </div>
         </div>
