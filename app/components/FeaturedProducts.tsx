@@ -113,10 +113,21 @@ const Products: React.FC = () => {
       </div>
       <Swiper
         spaceBetween={30}
-        slidesPerView={4}
+        slidesPerView={1}
         navigation={true}
         modules={[Navigation]}
-        className="product-slider"
+        className="relative product-slider"
+        breakpoints={{
+          640: {
+            slidesPerView: 2,
+          },
+          768: {
+            slidesPerView: 3,
+          },
+          1024: {
+            slidesPerView: 4,
+          },
+        }}
       >
         {products.map((product) => (
           <SwiperSlide key={product.id}>
@@ -130,6 +141,9 @@ const Products: React.FC = () => {
             />
           </SwiperSlide>
         ))}
+        <div className="absolute top-0 right-0 mt-4 mr-4">
+          <a href="/view-all" className="text-blue-600 hover:underline">View All</a>
+        </div>
       </Swiper>
     </div>
   );

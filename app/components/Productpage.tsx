@@ -12,6 +12,7 @@ const slides = [
     title: 'Fine Wines',
     description: 'Discover the world\'s finest wines from the best vineyards.',
   },
+
   {
     image: '/drink3.webp',
     title: 'Luxury Spirits',
