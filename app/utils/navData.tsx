@@ -19,5 +19,8 @@ export const navigation = {
      
       { name: 'Soft Drinks', href: '#' },
       { name: 'Liqueur', href: '#' },
+      {name: 'Champagne',href:'#'},
+      {name: 'Whisky',href:'#'},
+      {name: 'Spirits',href:'#'},
     ],
   }
