@@ -1,9 +1,10 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
+import ProductOverviewModal from '../components/productOverview'; // Make sure to import the modal
 
 interface Product {
   id: number;
@@ -55,7 +56,6 @@ const products: Product[] = [
     price: 35,
     status: 'Organic',
   },
-
   {
     id: 6,
     imageUrl: 'herodrink4.png',
@@ -74,9 +74,9 @@ const products: Product[] = [
   },
 ];
 
-const ProductCard: React.FC<Product> = ({ imageUrl, altText, label, price, status }) => {
+const ProductCard: React.FC<Product & { onClick: () => void }> = ({ imageUrl, altText, label, price, status, onClick }) => {
   return (
-    <div className="relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-full m-4">
+    <div onClick={onClick} className="cursor-pointer relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-full m-4">
       <div className="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white bg-clip-border rounded-xl h-64">
         <img src={imageUrl} alt={altText} className="object-contain w-full h-full" />
       </div>
@@ -93,18 +93,24 @@ const ProductCard: React.FC<Product> = ({ imageUrl, altText, label, price, statu
           {status || 'No status available'}
         </p>
       </div>
-      <div className="p-4 pt-0">
-        <button
-          className="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-2 px-4 rounded-lg shadow-gray-900/10 hover:shadow-gray-900/20 focus:opacity-85 active:opacity-85 active:shadow-none block w-full bg-blue-gray-900/10 text-blue-gray-900 shadow-none hover:scale-105 focus:scale-105 active:scale-100 border border-blue-gray-900"
-          type="button">
-          Add to Cart
-        </button>
-      </div>
     </div>
   );
 };
 
 const Products: React.FC = () => {
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleProductClick = (product: Product) => {
+    setSelectedProduct(product);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedProduct(null);
+  };
+
   return (
     <div className="mx-auto max-w-screen-xl mt-20 mb-20 px-4">
       <div className="flex justify-between items-center mb-8">
@@ -137,14 +143,15 @@ const Products: React.FC = () => {
               label={product.label}
               price={product.price}
               status={product.status}
-              id={0}  // Swiper requires an ID prop
-            />
+              onClick={() => handleProductClick(product)} id={0}            />
           </SwiperSlide>
         ))}
         <div className="absolute top-0 right-0 mt-4 mr-4">
           <a href="/view-all" className="text-blue-600 hover:underline">View All</a>
         </div>
       </Swiper>
+
+      <ProductOverviewModal product={selectedProduct} isOpen={isModalOpen} onClose={closeModal} />
     </div>
   );
 };

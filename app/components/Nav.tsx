@@ -3,6 +3,28 @@ import { Fragment, useState } from 'react'
 import { Dialog, Popover, Tab, Transition } from '@headlessui/react'
 import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { navigation } from '../utils/navData';
+import ProductOverviewModal from './productOverview'; // Ensure to import your ProductOverviewModal
+
+// Define interfaces for Product and CartItem
+interface Product {
+  id: number;
+  label: string;
+  price: string;
+  imageUrl: string;
+  altText: string;
+}
+
+interface CartItem {
+  id: number;
+  name: string;
+  href: string;
+  color: string;
+  price: string;
+  quantity: number;
+  imageSrc: string;
+  imageAlt: string;
+}
+
 
 function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(' ');
@@ -44,8 +66,29 @@ const cartItems = [
 export const Nav: React.FC = () => {
   const [open, setOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false); // State for side cart
-   
+  const [cartItems, setCartItems] = useState<CartItem[]>([]); // State for cart items
+
   const subtotal = cartItems.reduce((total, item) => total + item.quantity * parseFloat(item.price.slice(1)), 0);
+
+  // Function to add item to cart
+  const addToCart = (product: Product) => {
+    const newItem: CartItem = {
+      id: product.id,
+      name: product.label,
+      href: "#",
+      color: "750ml",
+      price: product.price,
+      quantity: 1, // Assuming initially adding 1 quantity
+      imageSrc: product.imageUrl,
+      imageAlt: product.altText,
+    };
+
+    setCartItems([...cartItems, newItem]);
+
+    // Show message (replace with better UI/UX)
+    alert(`${product.label} added to cart`);
+  };
+
 
   return (
     <div className="bg-white">
@@ -156,12 +199,12 @@ export const Nav: React.FC = () => {
                 <div className="border-t border-gray-200 px-4 py-6">
                   <a href="#" className="-m-2 flex items-center p-2">
                     <img
-                      src="https://tailwindui.com/img/flags/flag-canada.svg"
+                      src="https://tailwindui.com/img/flags/flag-ghana.svg"
                       alt=""
                       className="block h-auto w-5 flex-shrink-0"
                     />
                     <span className="ml-3 block text-base font-medium text-gray-900">CAD</span>
-                    <span className="sr-only">, change currency</span>
+                    {/* <span className="sr-only">, change currency</span> */}
                   </a>
                 </div>
               </Dialog.Panel>
