@@ -1,10 +1,11 @@
+
 'use client';
 import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
-import ProductOverviewModal from '../components/productOverview'; // Make sure to import the modal
+import ProductOverviewModal from '../components/productOverview';
 
 interface Product {
   id: number;
@@ -76,20 +77,23 @@ const products: Product[] = [
 
 const ProductCard: React.FC<Product & { onClick: () => void }> = ({ imageUrl, altText, label, price, status, onClick }) => {
   return (
-    <div onClick={onClick} className="cursor-pointer relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-full m-4">
-      <div className="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white bg-clip-border rounded-xl h-64">
+    <div
+      onClick={onClick}
+      className="cursor-pointer relative flex flex-col text-gray-700 bg-white shadow-md rounded-xl w-full m-4"
+    >
+      <div className="relative mx-4 mt-4 overflow-hidden rounded-xl h-64">
         <img src={imageUrl} alt={altText} className="object-contain w-full h-full" />
       </div>
       <div className="p-4">
         <div className="flex items-center justify-between mb-2">
-          <p className="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900">
+          <p className="text-base font-medium leading-relaxed text-blue-gray-900">
             {label}
           </p>
-          <p className="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900">
+          <p className="text-base font-medium leading-relaxed text-blue-gray-900">
             ${price.toFixed(2)}
           </p>
         </div>
-        <p className="block font-sans text-sm antialiased font-normal leading-normal text-gray-700 opacity-75">
+        <p className="text-sm font-normal leading-normal text-gray-700 opacity-75">
           {status || 'No status available'}
         </p>
       </div>
