@@ -1,4 +1,38 @@
+'use client';
+
 import React from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/autoplay';
+import { Autoplay } from 'swiper/modules';
+
+const slides = [
+  {
+    image: '/drink.jpg',
+    title: 'Fine Wines',
+    description: 'Discover the world\'s finest wines from the best vineyards.',
+  },
+  {
+    image: '/drink6.png',
+    title: 'Exquisite Cocktails',
+    description: 'Savor the taste of expertly crafted cocktails.',
+  },
+  {
+    image: '/drink3.webp',
+    title: 'Luxury Spirits',
+    description: 'Indulge in premium spirits for special moments.',
+  },
+  {
+    image: '/drink4.webp',
+    title: 'Craft Beers',
+    description: 'Explore unique flavors in our selection of craft beers.',
+  },
+  {
+    image: '/drink8.jpg',
+    title: 'Refreshing Mocktails',
+    description: 'Enjoy non-alcoholic drinks that are just as delightful.',
+  },
+];
 
 const Product: React.FC = () => {
   return (
@@ -21,16 +55,41 @@ const Product: React.FC = () => {
               </span>
             </h1>
             <p className="text-sm sm:text-base text-gray-800">
-              Explore the world of fine wines and exquisite drinks. Immerse yourself in the rich flavors and aromas that make every sip a moment to cherish.
+              Explore the world of fine wines and exquisite drinks. Immerse
+              yourself in the rich flavors and aromas that make every sip a
+              moment to cherish.
             </p>
           </div>
           <div className="w-full sm:w-1/3 lg:w-3/5 relative">
-            <img 
-              src="/drink4.webp" 
-              className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto" 
-              style={{ transform: 'rotate(20deg)' }} 
-              alt="Wine and Drink" 
-            />
+            <Swiper
+              spaceBetween={30}
+              centeredSlides={true}
+              autoplay={{
+                delay: 2500,
+                disableOnInteraction: false,
+              }}
+              loop={true}
+              modules={[Autoplay]}
+              className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto"
+            >
+              {slides.map((slide, index) => (
+                <SwiperSlide key={index}>
+                  <div className="flex flex-col items-center">
+                    <img
+                      src={slide.image}
+                      className="w-[300px] h-[300px] object-contain transform rotate-20"
+                      alt={slide.title}
+                    />
+                    <h2 className="text-2xl font-bold mt-4 text-gray-800">
+                      {slide.title}
+                    </h2>
+                    <p className="text-sm sm:text-base text-gray-600">
+                      {slide.description}
+                    </p>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
         </div>
       </div>
