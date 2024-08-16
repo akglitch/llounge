@@ -7,21 +7,57 @@ import { navigation } from '../utils/navData';
 function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(' ');
 }
+const cartItems = [
+  {
+    id: 1,
+    name: "Red Wine",
+    href: "#",
+    color: "750ml",
+    price: "$25.00",
+    quantity: 1,
+    imageSrc: "https://via.placeholder.com/150",
+    imageAlt: "Red Wine Bottle",
+  },
+  {
+    id: 2,
+    name: "White Wine",
+    href: "#",
+    color: "750ml",
+    price: "$30.00",
+    quantity: 2,
+    imageSrc: "https://via.placeholder.com/150",
+    imageAlt: "White Wine Bottle",
+  },
+  {
+    id: 3,
+    name: "Champagne",
+    href: "#",
+    color: "750ml",
+    price: "$45.00",
+    quantity: 1,
+    imageSrc: "https://via.placeholder.com/150",
+    imageAlt: "Champagne Bottle",
+  },
+]
+
 
 export const Nav: React.FC = () => {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
+  const [cartOpen, setCartOpen] = useState(false); // State for side cart
+   
+  const subtotal = cartItems.reduce((total, item) => total + item.quantity * parseFloat(item.price.slice(1)), 0);
 
   return (
     <div className="bg-white">
       {/* Mobile menu */}
       <Transition.Root show={open} as={Fragment}>
-        <Dialog className="relative z-40 lg:hidden" onClose={setOpen}>
+        <Dialog className="relative z-50 lg:hidden" onClose={setOpen}>
           <Transition.Child
             as={Fragment}
-            enter="transition-opacity ease-linear duration-300"
+            enter="transition-opacity ease-linear duration-600"
             enterFrom="opacity-0"
             enterTo="opacity-100"
-            leave="transition-opacity ease-linear duration-300"
+            leave="transition-opacity ease-linear duration-600"
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
@@ -30,13 +66,13 @@ export const Nav: React.FC = () => {
 
           <div className="fixed inset-0 z-40 flex">
             <Transition.Child
-              as={Fragment}
-              enter="transition ease-in-out duration-300 transform"
-              enterFrom="-translate-x-full"
-              enterTo="translate-x-0"
-              leave="transition ease-in-out duration-300 transform"
-              leaveFrom="translate-x-0"
-              leaveTo="-translate-x-full"
+               as={Fragment}
+               enter="transition ease-out duration-500 transform"
+               enterFrom="opacity-0 translate-x-full"
+               enterTo="opacity-100 translate-x-0"
+               leave="transition ease-in duration-500 transform"
+               leaveFrom="opacity-100 translate-x-0"
+               leaveTo="opacity-0 translate-x-full"
             >
               <Dialog.Panel className="relative flex w-full max-w-xs flex-col overflow-y-auto bg-white pb-12 shadow-xl">
                 <div className="flex px-4 pb-2 pt-5">
@@ -133,6 +169,130 @@ export const Nav: React.FC = () => {
           </div>
         </Dialog>
       </Transition.Root>
+
+
+
+
+
+ 
+     {/* Side Cart */}
+     <Transition.Root show={cartOpen} as={Fragment}>
+        <Dialog as="div" className="relative z-50" onClose={setCartOpen}>
+          <Transition.Child
+            as={Fragment}
+            enter="transition ease-in-out duration-300 transform"
+            enterFrom="translate-x-full"
+            enterTo="translate-x-0"
+            leave="transition ease-in-out duration-300 transform"
+            leaveFrom="translate-x-0"
+            leaveTo="translate-x-full"
+          >
+            <div className="fixed inset-0 overflow-hidden">
+              <div className="absolute inset-0 overflow-hidden">
+                <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
+                  <Dialog.Panel className="pointer-events-auto w-screen max-w-md">
+                    <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
+                      <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
+                        <div className="flex items-start justify-between">
+                          <h2 className="text-lg font-medium text-gray-900" id="slide-over-title">
+                            Shopping cart
+                          </h2>
+                          <div className="ml-3 flex h-7 items-center">
+                            <button
+                              type="button"
+                              className="relative -m-2 p-2 text-gray-400 hover:text-gray-500"
+                              onClick={() => setCartOpen(false)}
+                            >
+                              <span className="absolute -inset-0.5"></span>
+                              <span className="sr-only">Close panel</span>
+                              <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                            </button>
+                          </div>
+                        </div>
+
+                        {/* Cart Items */}
+                        <div className="mt-8">
+                          <div className="flow-root">
+                            <ul role="list" className="-my-6 divide-y divide-gray-200">
+                              {cartItems.map((item) => (
+                                <li key={item.id} className="flex py-6">
+                                  <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                                    <img
+                                      src={item.imageSrc}
+                                      alt={item.imageAlt}
+                                      className="h-full w-full object-cover object-center"
+                                    />
+                                  </div>
+
+                                  <div className="ml-4 flex flex-1 flex-col">
+                                    <div>
+                                      <div className="flex justify-between text-base font-medium text-gray-900">
+                                        <h3>
+                                          <a href={item.href}>{item.name}</a>
+                                        </h3>
+                                        <p className="ml-4">{item.price}</p>
+                                      </div>
+                                      <p className="mt-1 text-sm text-gray-500">{item.color}</p>
+                                    </div>
+                                    <div className="flex flex-1 items-end justify-between text-sm">
+                                      <p className="text-gray-500">Qty {item.quantity}</p>
+
+                                      <div className="flex">
+                                        <button
+                                          type="button"
+                                          className="font-medium text-indigo-600 hover:text-indigo-500"
+                                        >
+                                          Remove
+                                        </button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
+                        <div className="flex justify-between text-base font-medium text-gray-900">
+                          <p>Subtotal</p>
+                          <p>${subtotal.toFixed(2)}</p>
+                        </div>
+                        <p className="mt-0.5 text-sm text-gray-500">
+                          Shipping and taxes calculated at checkout.
+                        </p>
+                        <div className="mt-6">
+                          <a
+                            href="#"
+                            className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                          >
+                            Checkout
+                          </a>
+                        </div>
+                        <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
+                          <p>
+                            or{" "}
+                            <button
+                              type="button"
+                              className="font-medium text-indigo-600 hover:text-indigo-500"
+                              onClick={() => setCartOpen(false)}
+                            >
+                              Continue Shopping
+                              <span aria-hidden="true"> &rarr;</span>
+                            </button>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </Dialog.Panel>
+                </div>
+              </div>
+            </div>
+          </Transition.Child>
+        </Dialog>
+      </Transition.Root>
+
 
       <header className="relative bg-white">
         <nav aria-label="Top" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -252,7 +412,7 @@ export const Nav: React.FC = () => {
                       alt=""
                       className="block h-auto w-5 flex-shrink-0"
                     />
-                    <span className="ml-3 block text-sm font-medium">CAD</span>
+                    <span className="ml-3 block text-sm font-medium">GHC</span>
                     <span className="sr-only">, change currency</span>
                   </a>
                 </div>
@@ -271,6 +431,7 @@ export const Nav: React.FC = () => {
                     <ShoppingBagIcon
                       className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
                       aria-hidden="true"
+                      onClick={() => setCartOpen(true)} // Open the side cart
                     />
                     <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">0</span>
                     <span className="sr-only">items in cart, view bag</span>
