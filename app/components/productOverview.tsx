@@ -25,10 +25,16 @@ const ProductOverviewModal: React.FC<ProductOverviewModalProps> = ({ product, is
 
   return (
     <div
-      className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-75 z-50"
+      className={`fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-75 z-50 transition-opacity duration-300 ${
+        isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+      }`}
       onClick={handleModalClick}
     >
-      <div className="bg-white rounded-lg shadow-lg overflow-hidden max-w-3xl w-full mx-4 sm:mx-0 p-4 sm:p-6">
+      <div
+        className={`bg-white rounded-lg shadow-lg overflow-hidden max-w-3xl w-full mx-4 sm:mx-0 p-4 sm:p-6 transition-transform duration-300 ${
+          isOpen ? 'scale-100' : 'scale-95'
+        }`}
+      >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           {/* Product Image */}
           <div className="flex justify-center">

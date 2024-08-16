@@ -1,7 +1,7 @@
 export const navigation = {
     categories: [
       {
-        id: 'women',
+        id: 'any',
         name: 'Wine',
         featured: [
           {
