@@ -88,7 +88,7 @@ const Product: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 mt-10 sm:mt-20">  {/* Added margin top (mt-10) */}
+      <div className="absolute bottom-15 left-1/2 transform -translate-x-1/2 mt-10 sm:mt-20">  {/* Added margin top (mt-10) */}
         <p className="text-gray-800 text-center mb-2">Scroll down for more</p>
         <div className="flex justify-center">
           <button className="animate-bounce">

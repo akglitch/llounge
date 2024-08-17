@@ -1,4 +1,3 @@
-
 'use client';
 import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -81,19 +80,19 @@ const ProductCard: React.FC<Product & { onClick: () => void }> = ({ imageUrl, al
       onClick={onClick}
       className="cursor-pointer relative flex flex-col text-gray-700 bg-white shadow-md rounded-xl w-full m-4"
     >
-      <div className="relative mx-4 mt-4 overflow-hidden rounded-xl h-64">
+      <div className="relative mx-4 mt-4 overflow-hidden rounded-xl h-48"> {/* Reduced height */}
         <img src={imageUrl} alt={altText} className="object-contain w-full h-full" />
       </div>
-      <div className="p-4">
+      <div className="p-3"> {/* Reduced padding */}
         <div className="flex items-center justify-between mb-2">
-          <p className="text-base font-medium leading-relaxed text-blue-gray-900">
+          <p className="text-sm font-medium leading-relaxed text-blue-gray-900"> {/* Reduced text size */}
             {label}
           </p>
-          <p className="text-base font-medium leading-relaxed text-blue-gray-900">
+          <p className="text-sm font-medium leading-relaxed text-blue-gray-900"> {/* Reduced text size */}
             ${price.toFixed(2)}
           </p>
         </div>
-        <p className="text-sm font-normal leading-normal text-gray-700 opacity-75">
+        <p className="text-xs font-normal leading-normal text-gray-700 opacity-75"> {/* Reduced text size */}
           {status || 'No status available'}
         </p>
       </div>
@@ -118,7 +117,7 @@ const Products: React.FC = () => {
   return (
     <div className="mx-auto max-w-screen-xl mt-20 mb-20 px-4">
       <div className="flex justify-between items-center mb-8">
-        <h2 className="text-2xl font-bold text-gray-700">Recommended</h2>
+        <h2 className="uppercase text-gray-800 font-black text-lg">Recommended</h2>
         <a href="/view-all" className="text-blue-600 hover:underline">View All</a>
       </div>
       <Swiper
