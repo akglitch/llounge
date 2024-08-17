@@ -24,8 +24,9 @@ const ProductOverviewModal: React.FC<ProductOverviewModalProps> = ({ product, is
   if (!product || !isOpen) return null;
 
   return (
+    <div className='sm:h-56'>
     <div
-      className={`fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-75 z-50 transition-opacity duration-300 ${
+      className={`fixed inset-0 flex items-center justify-center sm:min-h-72 bg-gray-500 bg-opacity-75 z-50 transition-opacity duration-300 ${
         isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
       }`}
       onClick={handleModalClick}
@@ -121,6 +122,7 @@ const ProductOverviewModal: React.FC<ProductOverviewModalProps> = ({ product, is
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

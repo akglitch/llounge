@@ -17,24 +17,9 @@ interface Product {
 }
 
 const products: Product[] = [
+
   {
     id: 1,
-    imageUrl: '/drink.jpg',
-    altText: 'Red Wine',
-    label: 'Premium Red Wine',
-    price: 160,
-    status: undefined,
-  },
-  {
-    id: 2,
-    imageUrl: 'drink4.webp',
-    altText: 'Cocktail',
-    label: 'Handcrafted Cocktail',
-    price: 30,
-    status: 'New',
-  },
-  {
-    id: 3,
     imageUrl: 'drink8.jpg',
     altText: 'White Wine',
     label: 'Fine White Wine',
@@ -42,7 +27,7 @@ const products: Product[] = [
     status: 'Selling Fast',
   },
   {
-    id: 4,
+    id: 2,
     imageUrl: 'herodrink6.jpg',
     altText: 'White Wine',
     label: 'Fine White Wine',
@@ -50,7 +35,7 @@ const products: Product[] = [
     status: 'Selling Fast',
   },
   {
-    id: 5,
+    id: 3,
     imageUrl: 'drink7.jpeg',
     altText: 'Champagne',
     label: 'Luxury Champagne',
@@ -58,7 +43,7 @@ const products: Product[] = [
     status: 'Organic',
   },
   {
-    id: 6,
+    id: 4,
     imageUrl: 'herodrink4.png',
     altText: 'White Wine',
     label: 'Fine White Wine',
@@ -66,7 +51,7 @@ const products: Product[] = [
     status: 'Selling Fast',
   },
   {
-    id: 7,
+    id: 5,
     imageUrl: 'herodrink5.webp',
     altText: 'White Wine',
     label: 'Fine White Wine',
@@ -101,7 +86,7 @@ const ProductCard: React.FC<Product & { onClick: () => void }> = ({ imageUrl, al
   );
 };
 
-const Products: React.FC = () => {
+const HotDeals: React.FC = () => {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -118,7 +103,7 @@ const Products: React.FC = () => {
   return (
     <div className="mx-auto max-w-screen-xl mt-20 mb-20 px-4">
       <div className="flex justify-between items-center mb-8">
-        <h2 className="text-2xl font-bold text-gray-700">Featured Products</h2>
+        <h2 className="text-2xl font-bold text-gray-700">HotDeals</h2>
         <a href="/view-all" className="text-blue-600 hover:underline">View All</a>
       </div>
       <Swiper
@@ -160,4 +145,4 @@ const Products: React.FC = () => {
   );
 };
 
-export default Products;
+export default HotDeals;
