@@ -43,6 +43,11 @@
   resolved "https://registry.yarnpkg.com/@floating-ui/utils/-/utils-0.2.7.tgz#d0ece53ce99ab5a8e37ebdfe5e32452a2bfc073e"
   integrity sha512-X8R8Oj771YRl/w+c1HqAC1szL8zWQRwFvgDwT129k9ACdBoud/+/rX9V0qiMl6LWUdP9voC2nDVZYPMQQsb6eA==
 
+"@glidejs/glide@^3.6.2":
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/@glidejs/glide/-/glide-3.6.2.tgz#7d6a3610d2bfae4b5d1ea0294334f3dabc69edce"
+  integrity sha512-oXw7In0IZV69PC0PChQakY+yh+UnqIb5+zfVuEIzub6Kkfl1foo7TAhr2PZXPzihOG9YS57t8wvdzBFEZ0aPVA==
+
 "@headlessui/react@^2.1.2":
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/@headlessui/react/-/react-2.1.2.tgz#3ca9378d7d0db6aefdb135f957815790786214ef"
@@ -260,6 +265,11 @@
   version "3.9.0"
   resolved "https://registry.yarnpkg.com/@tanstack/virtual-core/-/virtual-core-3.9.0.tgz#60db41fe8a19bb1a21873d86d8731416391e838a"
   integrity sha512-Saga7/QRGej/IDCVP5BgJ1oDqlDT2d9rQyoflS3fgMS8ntJ8JGw/LBqK2GorHa06+VrNFc0tGz65XQHJQJetFQ==
+
+"@types/glider-js@^1.7.11":
+  version "1.7.11"
+  resolved "https://registry.yarnpkg.com/@types/glider-js/-/glider-js-1.7.11.tgz#b3a26ca98bad3c5b401ccb53dba120a3506923ab"
+  integrity sha512-UvzRF5j2ir8/k7EN+sK+pkNTcPxeTFg2ViVPNhDcwV/GNuWD98iqynXERdY5BLOlV392CPHj8i89v8/qMso73A==
 
 "@types/node@^20":
   version "20.14.9"
@@ -505,6 +515,13 @@ function-bind@^1.1.2:
   resolved "https://registry.npmjs.org/function-bind/-/function-bind-1.1.2.tgz"
   integrity sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA==
 
+glidejs@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/glidejs/-/glidejs-2.1.0.tgz#447b5126cf6e282f20ccdcc99cdd515d21bd8eb1"
+  integrity sha512-DWm2h7rv1BruHcDY/icf8re2mG6CCwiFzWbK5OweLz7OD6ljVEJ0O9dmxvvLxQei/apzbyhWCwyhL5itqrZkgQ==
+  dependencies:
+    jquery "2.2.*"
+
 glob-parent@^5.1.2, glob-parent@~5.1.2:
   version "5.1.2"
   resolved "https://registry.npmjs.org/glob-parent/-/glob-parent-5.1.2.tgz"
@@ -597,6 +614,11 @@ jiti@^1.21.0:
   version "1.21.6"
   resolved "https://registry.npmjs.org/jiti/-/jiti-1.21.6.tgz"
   integrity sha512-2yTgeWTWzMWkHu6Jp9NKgePDaYHbntiwvYuuJLbbN9vl7DC9DvXKOB2BC3ZZ92D3cvV/aflH0osDfwpHepQ53w==
+
+jquery@2.2.*:
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-2.2.4.tgz#2c89d6889b5eac522a7eea32c14521559c6cbf02"
+  integrity sha512-lBHj60ezci2u1v2FqnZIraShGgEXq35qCzMv4lITyHGppTnA13rwR0MgwyNJh9TnDs3aXUvd1xjAotfraMHX/Q==
 
 "js-tokens@^3.0.0 || ^4.0.0":
   version "4.0.0"
