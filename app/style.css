@@ -1,0 +1,38 @@
+.custom-next-arrow,
+.custom-prev-arrow {
+  background-color: #000; /* Change to your desired color */
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 10;
+}
+
+.custom-next-arrow {
+  right: 10px;
+}
+
+.custom-prev-arrow {
+  left: 10px;
+}
+
+.custom-next-arrow::after,
+.custom-prev-arrow::after {
+  font-size: 16px; /* Change arrow size */
+  color: #fff; /* Change arrow color */
+}
+
+/* Hide arrows on small screens */
+@media (max-width: 640px) {
+  .custom-next-arrow,
+  .custom-prev-arrow {
+    display: none;
+  }
+}

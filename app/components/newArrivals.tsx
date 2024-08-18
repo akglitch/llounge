@@ -18,6 +18,22 @@ interface Product {
 const products: Product[] = [
   {
     id: 1,
+    imageUrl: '/herodrink.webp',
+    altText: 'Red Wine',
+    label: 'Premium Red Wine',
+    price: 160,
+    status: undefined,
+  },
+  {
+    id: 2,
+    imageUrl: 'herodrink2.jpg',
+    altText: 'Cocktail',
+    label: 'Handcrafted Cocktail',
+    price: 30,
+    status: 'New',
+  },
+  {
+    id: 3,
     imageUrl: 'drink8.jpg',
     altText: 'White Wine',
     label: 'Fine White Wine',
@@ -25,7 +41,7 @@ const products: Product[] = [
     status: 'Selling Fast',
   },
   {
-    id: 2,
+    id: 4,
     imageUrl: 'herodrink6.jpg',
     altText: 'White Wine',
     label: 'Fine White Wine',
@@ -33,15 +49,15 @@ const products: Product[] = [
     status: 'Selling Fast',
   },
   {
-    id: 3,
-    imageUrl: 'drink4.webp',
+    id: 5,
+    imageUrl: 'drink7.jpeg',
     altText: 'Champagne',
     label: 'Luxury Champagne',
     price: 35,
     status: 'Organic',
   },
   {
-    id: 4,
+    id: 6,
     imageUrl: 'herodrink4.png',
     altText: 'White Wine',
     label: 'Fine White Wine',
@@ -49,7 +65,7 @@ const products: Product[] = [
     status: 'Selling Fast',
   },
   {
-    id: 5,
+    id: 7,
     imageUrl: 'herodrink5.webp',
     altText: 'White Wine',
     label: 'Fine White Wine',
@@ -84,7 +100,7 @@ const ProductCard: React.FC<Product & { onClick: () => void }> = ({ imageUrl, al
   );
 };
 
-const HotDeals: React.FC = () => {
+const NewArrivals: React.FC = () => {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -101,7 +117,7 @@ const HotDeals: React.FC = () => {
   return (
     <div className="mx-auto max-w-screen-xl mt-20 mb-20 px-4">
       <div className="flex justify-between items-center mb-8">
-        <h2 className="uppercase text-gray-800 font-black text-lg">HotDeals</h2>
+        <h2 className="uppercase text-gray-800 font-black text-lg">New Arrivals</h2>
         <a href="/view-all" className="text-blue-600 hover:underline">View All</a>
       </div>
       <Swiper
@@ -143,4 +159,4 @@ const HotDeals: React.FC = () => {
   );
 };
 
-export default HotDeals;
+export default NewArrivals;
