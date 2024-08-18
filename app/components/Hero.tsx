@@ -12,21 +12,17 @@ const slides = [
     title: 'Fine Wines',
     description: "Discover the world's finest wines from the best vineyards.",
   },
-  {
-    image: '/drink3.webp',
-    title: 'Luxury Spirits',
-    description: 'Indulge in premium spirits for special moments.',
-  },
+
   {
     image: '/drink4.webp',
     title: 'Craft Beers',
     description: 'Explore unique flavors in our selection of craft beers.',
   },
-  {
-    image: '/drink8.jpg',
-    title: 'Refreshing Mocktails',
-    description: 'Enjoy non-alcoholic drinks that are just as delightful.',
-  },
+  // {
+  //   image: '/herodrink.webp',
+  //   title: 'Refreshing Mocktails',
+  //   description: 'Enjoy non-alcoholic drinks that are just as delightful.',
+  // },
 ];
 
 const Product: React.FC = () => {
@@ -72,7 +68,7 @@ const Product: React.FC = () => {
                   <div className="flex flex-col items-center">
                     <img
                       src={slide.image}
-                      className="w-[300px] h-[300px] object-contain transform rotate-20"
+                      className="w-[300px] rotate-45 h-[300px] object-contain transform rotate-20"
                       alt={slide.title}
                     />
                     <h2 className="text-2xl font-bold mt-4 text-gray-800">
