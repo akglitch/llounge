@@ -8,8 +8,7 @@ import Footer from "./components/Footer";
 import Services from "./components/Service";
 import { Nav } from "./components/Nav";
 import Products from "./components/Recommended";
-import HotDeals from "./components/hotDeals";
-import NewArrivals from "./components/newArrivals";
+
 
 
 export default function Home() {
@@ -18,8 +17,7 @@ export default function Home() {
       <Nav />
       <Product />
      <Products />
-     <HotDeals />
-     <NewArrivals />
+
       <Explore />
       <Services />
       <Blog />
