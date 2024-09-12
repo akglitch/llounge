@@ -1,7 +1,10 @@
+// newArrivals.tsx
 'use client';
+
 import React, { useState, useRef, useEffect } from 'react';
 import Glide from '@glidejs/glide';
 import ProductOverviewModal from '../components/productOverview';
+import ProductCard from '../components/productCard';  // Import the reusable ProductCard
 import '@glidejs/glide/dist/css/glide.core.min.css';
 import '@glidejs/glide/dist/css/glide.theme.min.css';
 
@@ -73,39 +76,6 @@ const products: Product[] = [
   },
 ];
 
-const ProductCard: React.FC<Product & { onClick: () => void }> = ({
-  imageUrl,
-  altText,
-  label,
-  price,
-  status,
-  onClick,
-}) => {
-  return (
-    <div
-      onClick={onClick}
-      className="cursor-pointer relative flex flex-col text-gray-700 bg-white shadow-md rounded-xl w-full m-4"
-    >
-      <div className="relative mx-4 mt-4 overflow-hidden rounded-xl h-48">
-        <img src={imageUrl} alt={altText} className="object-contain w-full h-full" />
-      </div>
-      <div className="p-3">
-        <div className="flex items-center justify-between mb-2">
-          <p className="text-sm font-medium leading-relaxed text-blue-gray-900">
-            {label}
-          </p>
-          <p className="text-sm font-medium leading-relaxed text-blue-gray-900">
-            ${price.toFixed(2)}
-          </p>
-        </div>
-        <p className="text-xs font-normal leading-normal text-gray-700 opacity-75">
-          {status || 'No status available'}
-        </p>
-      </div>
-    </div>
-  );
-};
-
 const NewArrivals: React.FC = () => {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -156,12 +126,13 @@ const NewArrivals: React.FC = () => {
             {products.map((product) => (
               <li key={product.id} className="glide__slide">
                 <ProductCard
-                        imageUrl={product.imageUrl}
-                        altText={product.altText}
-                        label={product.label}
-                        price={product.price}
-                        status={product.status}
-                        onClick={() => handleProductClick(product)} id={0}                />
+                  imageUrl={product.imageUrl}
+                  altText={product.altText}
+                  label={product.label}
+                  price={product.price}
+                  status={product.status}
+                  onClick={() => handleProductClick(product)}
+                />
               </li>
             ))}
           </ul>
